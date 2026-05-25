@@ -160,7 +160,7 @@ def health():
         "status": "healthy",
         "openrouter_key_set": bool(or_key and len(or_key) > 20),
         "nvidia_key_set": bool(nv_key and nv_key.startswith("nvapi-")),
-        "key_set": bool(or_key and nv_key), # Restored for extension compatibility
+        "key_set": bool(nv_key and nv_key.startswith("nvapi-")), # Restored for extension compatibility
         "models": MODELS
     })
 
