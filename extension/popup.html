@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 280px;
+      padding: 20px;
+      font-family: 'Segoe UI', -apple-system, sans-serif;
+      background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #e0e0e0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .logo {
+      font-size: 26px;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 10px;
+      color: #8892b0;
+    }
+    .status-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(10px);
+    }
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e84118;
+      box-shadow: 0 0 6px rgba(232, 65, 24, 0.5);
+      transition: all 0.3s;
+    }
+    .indicator.online {
+      background: #4cd137;
+      box-shadow: 0 0 8px rgba(76, 209, 55, 0.6);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(76, 209, 55, 0.4); }
+      50% { box-shadow: 0 0 12px rgba(76, 209, 55, 0.8); }
+    }
+    .status-label {
+      font-size: 12px;
+      color: #8892b0;
+    }
+    .status-value {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .toggle-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toggle-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 22px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transition: 0.3s;
+      border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    .key-warning {
+      color: #fbc531;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 8px;
+      padding: 8px;
+      background: rgba(251, 197, 49, 0.1);
+      border-radius: 8px;
+      border: 1px solid rgba(251, 197, 49, 0.2);
+    }
+    .instructions {
+      font-size: 11px;
+      color: #8892b0;
+      line-height: 1.6;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+    .instructions b { color: #ccd6f6; }
+    .instructions ol { padding-left: 18px; }
+    .instructions code {
+      background: rgba(102, 126, 234, 0.2);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">⚡</span>
+    <div>
+      <h1>LeetCode-NVIDIA-AUTO</h1>
+      <div class="subtitle">Multi-Model AI Solver</div>
+    </div>
+  </div>
+
+  <div class="status-card">
+    <div class="status-row">
+      <div id="api-status" class="indicator"></div>
+      <div>
+        <div class="status-label">Backend Status</div>
+        <div class="status-value" id="status-text">Checking...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toggle-card">
+    <span class="toggle-label">🤖 Auto-Mode</span>
+    <label class="switch">
+      <input type="checkbox" id="auto-mode-toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div id="key-warning" class="key-warning" style="display:none;">
+    ⚠️ NVIDIA API Key not configured in .env
+  </div>
+
+  <div class="instructions">
+    <b>How to Use:</b>
+    <ol>
+      <li>Run <code>start_backend.bat</code> (Win) or <code>./start_backend.sh</code> (Mac/Linux)</li>
+      <li>Open any LeetCode problem</li>
+      <li>Click the 🤖 button or enable Auto-Mode</li>
+    </ol>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# LeetCode-NVIDIA-AUTO Git Ignore Rules
+
+# Environments & Private Configs
+backend/.env
+.env
+backend/venv/
+venv/
+
+# Active Browser Profiles & Session Data (CRITICAL: DO NOT COMMIT!)
+playwright_bot/chrome_data/
+chrome_data/
+
+# Local Problem Progress & Solution History
+playwright_bot/solver_knowledge.json
+solver_knowledge.json
+playwright_bot/crash_log.txt
+crash_log.txt
+
+# Python Caches & Compiled bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Operating System Specific Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary and Scratch Directories
+tmp/
+scratch/

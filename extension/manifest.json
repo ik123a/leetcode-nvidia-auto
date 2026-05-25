@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode-NVIDIA-AUTO",
+  "version": "1.0",
+  "description": "Automatically solve LeetCode problems using NVIDIA's multi-model AI.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "http://127.0.0.1:5050/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/problems/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://leetcode.com/*"]
+    }
+  ]
+}
