@@ -45,10 +45,12 @@ def strip_markdown(text, language="cpp"):
     if not text or not isinstance(text, str):
         return ""
     
-    lang_name = get_language_name(language).lower()
+    lang_name = get_language_name(language)
+    escaped_lang = re.escape(language)
+    escaped_lang_name = re.escape(lang_name)
     
     # Try language-specific blocks first
-    code_blocks = re.findall(rf'```(?:{language}|{lang_name})?\s*(.*?)```', text, re.DOTALL | re.IGNORECASE)
+    code_blocks = re.findall(rf'```(?:{escaped_lang}|{escaped_lang_name})?\s*(.*?)```', text, re.DOTALL | re.IGNORECASE)
     if not code_blocks:
         # Fallback to any markdown block
         code_blocks = re.findall(r'```(?:\w+)?\s*(.*?)```', text, re.DOTALL)
