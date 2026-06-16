@@ -28,20 +28,46 @@ function createHUD() {
     gap: 6px; min-width: 200px; transition: all 0.3s ease; pointer-events: none;
     opacity: 0; transform: translateY(-10px);
   `;
-  hud.innerHTML = `
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <div id="hud-indicator" style="width: 8px; height: 8px; border-radius: 50%; background: #667eea; box-shadow: 0 0 10px #667eea; animation: pulse-hud 2s infinite;"></div>
-        <span id="hud-status" style="font-size: 13px; font-weight: 600; color: #e2e8f0;">Ready</span>
-      </div>
-      <span id="hud-timer" style="font-size: 12px; font-family: monospace; color: #94a3b8;">00:00</span>
-    </div>
-    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-top: 4px;">
-      <div id="hud-progress" style="width: 0%; height: 100%; background: #667eea; transition: width 0.3s ease;"></div>
-    </div>
-  `;
+  const row = document.createElement('div');
+  row.style.cssText = "display: flex; align-items: center; justify-content: space-between; gap: 10px;";
+
+  const statusGroup = document.createElement('div');
+  statusGroup.style.cssText = "display: flex; align-items: center; gap: 8px;";
+
+  const indicator = document.createElement('div');
+  indicator.id = 'hud-indicator';
+  indicator.style.cssText = "width: 8px; height: 8px; border-radius: 50%; background: #667eea; box-shadow: 0 0 10px #667eea; animation: pulse-hud 2s infinite;";
+
+  const status = document.createElement('span');
+  status.id = 'hud-status';
+  status.style.cssText = "font-size: 13px; font-weight: 600; color: #e2e8f0;";
+  status.textContent = 'Ready';
+
+  statusGroup.appendChild(indicator);
+  statusGroup.appendChild(status);
+
+  const timer = document.createElement('span');
+  timer.id = 'hud-timer';
+  timer.style.cssText = "font-size: 12px; font-family: monospace; color: #94a3b8;";
+  timer.textContent = '00:00';
+
+  row.appendChild(statusGroup);
+  row.appendChild(timer);
+
+  const progressContainer = document.createElement('div');
+  progressContainer.style.cssText = "width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; margin-top: 4px;";
+
+  const progress = document.createElement('div');
+  progress.id = 'hud-progress';
+  progress.style.cssText = "width: 0%; height: 100%; background: #667eea; transition: width 0.3s ease;";
+
+  progressContainer.appendChild(progress);
+
+  hud.appendChild(row);
+  hud.appendChild(progressContainer);
+
   const style = document.createElement('style');
-  style.innerHTML = `@keyframes pulse-hud { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }`;
+  style.textContent = `@keyframes pulse-hud { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }`;
   document.head.appendChild(style);
   document.body.appendChild(hud);
 }
