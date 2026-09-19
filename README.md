@@ -50,7 +50,7 @@ graph TD
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/leetcode-nvidia-auto.git
+git clone https://github.com/ik123a/leetcode-nvidia-auto.git
 cd leetcode-nvidia-auto
 ```
 
