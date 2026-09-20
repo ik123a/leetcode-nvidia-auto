@@ -35,3 +35,31 @@ scratch/
 /backend/venv/Lib/site-packages/patchright/driver/node.exe
 
 /backend/venv/Lib/site-packages/playwright/driver/node.exe
+
+# Auto-added safety ignores for large files and temp data
+node_modules/
+.venv/
+*.pyc
+*.pyo
+.next/
+dist/
+build/
+.gradle/
+local.properties
+*.iml
+.idea/libraries/
+.idea/caches/
+*.h5
+*.pt
+*.bin
+*.gguf
+*.zst
+*.tar.gz
+*.iso
+*.vmdk
+*.dll
+*.exe
+*.zip
+*.7z
+*.rar
+.turbo/
