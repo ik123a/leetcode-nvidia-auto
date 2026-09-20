@@ -31,3 +31,7 @@ desktop.ini
 # Temporary and Scratch Directories
 tmp/
 scratch/
+
+/backend/venv/Lib/site-packages/patchright/driver/node.exe
+
+/backend/venv/Lib/site-packages/playwright/driver/node.exe
