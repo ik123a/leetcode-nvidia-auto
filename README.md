@@ -1,7 +1,6 @@
 # ⚡ LeetCode-NVIDIA-AUTO 🤖
 > A highly resilient, dynamic, and multi-lingual browser automation suite that automatically solves LeetCode problems using NVIDIA NIM (AI Chat Completions) & Llama-based judging with multi-model evolution.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.8+](https://img.shields.io/badge/Python-3.8+-violet.svg)](https://www.python.org/)
 [![Platform: Win | macOS | Linux](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-green.svg)](#)
 
@@ -144,4 +143,4 @@ By default, the backend rotates through these premium NVIDIA-hosted NIM models o
 ---
 
 ## 📜 License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+No LICENSE file has been added to this repository yet, so no license is currently granted. Add one before reusing this code.
