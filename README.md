@@ -1,4 +1,38 @@
 # ⚡ LeetCode-NVIDIA-AUTO 🤖
+
+## Verified scope — 10 November 2026
+
+The implementation combines a Manifest V3 LeetCode extension, a Flask backend
+on port 5050 and a separate persistent-profile Playwright bot. It scrapes task
+text and editor language, obtains model-generated code, injects it and can run
+and submit it automatically. Judge/model selection is orchestration rather than
+proof of solution correctness or a measured solve rate.
+
+`/solve` and `/solve_evolve` now require a JSON object. Malformed JSON, null,
+arrays and scalar values return HTTP 400 with a JSON error before provider
+dispatch, replacing the previous unhandled `.get` crashes.
+
+```sh
+python -m unittest discover -s backend -p test_requests.py -v
+node --check extension/content.js
+node --check extension/injected.js
+node --check extension/popup.js
+```
+
+Both offline Flask tests pass, including a synthetic successful solve. Solver
+providers and dotenv loading are replaced before import; no key or account is
+used. Syntax checks establish parsing only. Current editor/DOM compatibility,
+model availability, Playwright profile behavior and automatic submissions remain
+unverified. The broad CORS setting, development debug server, field-level input
+validation and unpinned dependencies remain review items before exposing a server.
+
+![Source review flow diagram, not a runtime screenshot](docs/review-flow.svg)
+
+The diagram is based on code, not a live account capture. No login, solution
+submission, paid inference, browser installation or persistent session was run.
+Keep `playwright_bot/chrome_data/` and `.env` private. The existing no-license
+status is preserved; this review adds no license grant.
+
 > A highly resilient, dynamic, and multi-lingual browser automation suite that automatically solves LeetCode problems using NVIDIA NIM (AI Chat Completions) & Llama-based judging with multi-model evolution.
 
 [![Python: 3.8+](https://img.shields.io/badge/Python-3.8+-violet.svg)](https://www.python.org/)
