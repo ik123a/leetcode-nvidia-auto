@@ -22,12 +22,12 @@ async function checkStatus() {
     } else {
       statusIndicator.classList.remove('online');
       statusText.innerText = 'Offline';
-      statusText.style.color = '#e84118';
+      statusText.style.color = '#ff9b8b';
     }
   } catch (err) {
     statusIndicator.classList.remove('online');
     statusText.innerText = 'Offline';
-    statusText.style.color = '#e84118';
+    statusText.style.color = '#ff9b8b';
   }
 }
 

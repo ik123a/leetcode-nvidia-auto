@@ -68,7 +68,9 @@ async def _solve_evolve(problem_data, model_name, previous_attempts):
 
 @app.route('/solve', methods=['POST'])
 def solve():
-    data = request.json
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"success": False, "error": "Expected a JSON object"}), 400
     title = data.get('title')
     description = data.get('description')
     boilerplate = data.get('boilerplate')
@@ -115,7 +117,9 @@ def solve():
 @app.route('/solve_evolve', methods=['POST'])
 def solve_evolve():
     """Evolution endpoint: single model call with full history of previous failures."""
-    data = request.json
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"success": False, "error": "Expected a JSON object"}), 400
     title = data.get('title')
     description = data.get('description')
     boilerplate = data.get('boilerplate')

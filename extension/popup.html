@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>leetcode-nvidia-auto settings</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      width: 280px;
+      width: 320px;
+      max-width: 100vw;
       padding: 20px;
       font-family: 'Segoe UI', -apple-system, sans-serif;
       background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -28,8 +31,8 @@
       -webkit-text-fill-color: transparent;
     }
     .subtitle {
-      font-size: 10px;
-      color: #8892b0;
+      font-size: 12px;
+      color: #b1bdd7;
     }
     .status-card {
       background: rgba(255, 255, 255, 0.05);
@@ -63,7 +66,7 @@
     }
     .status-label {
       font-size: 12px;
-      color: #8892b0;
+      color: #b1bdd7;
     }
     .status-value {
       font-size: 13px;
@@ -126,8 +129,8 @@
       border: 1px solid rgba(251, 197, 49, 0.2);
     }
     .instructions {
-      font-size: 11px;
-      color: #8892b0;
+      font-size: 12px;
+      color: #b1bdd7;
       line-height: 1.6;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -140,8 +143,20 @@
       background: rgba(102, 126, 234, 0.2);
       padding: 1px 4px;
       border-radius: 3px;
-      font-size: 10px;
+      font-size: 12px;
     }
+
+    /* Keep the compact popup identity with readable text and keyboard controls. */
+    .switch { flex: 0 0 44px; width: 44px; height: 44px; }
+    .switch input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; z-index: 1; cursor: pointer; }
+    .slider { top: 11px; bottom: 11px; pointer-events: none; }
+    input:focus-visible + .slider { outline: 2px solid #e2e8f0; outline-offset: 4px; }
+    select:focus-visible, button:focus-visible, input[type="range"]:focus-visible { outline: 2px solid #e2e8f0; outline-offset: 3px; }
+    select, button { min-height: 44px; }
+    .header > div, .status-row > div { min-width: 0; }
+    .instructions, .key-status { overflow-wrap: anywhere; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+    h1 { background: none; color: #c4b5fd; -webkit-text-fill-color: currentColor; }
   </style>
 </head>
 <body>
@@ -158,7 +173,7 @@
       <div id="api-status" class="indicator"></div>
       <div>
         <div class="status-label">Backend Status</div>
-        <div class="status-value" id="status-text">Checking...</div>
+        <div class="status-value" id="status-text" role="status" aria-live="polite">Checking...</div>
       </div>
     </div>
   </div>
@@ -166,7 +181,7 @@
   <div class="toggle-card">
     <span class="toggle-label">🤖 Auto-Mode</span>
     <label class="switch">
-      <input type="checkbox" id="auto-mode-toggle">
+      <input type="checkbox" id="auto-mode-toggle" aria-label="Enable auto mode">
       <span class="slider"></span>
     </label>
   </div>
