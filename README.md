@@ -26,6 +26,16 @@ model availability, Playwright profile behavior and automatic submissions remain
 unverified. The broad CORS setting, development debug server, field-level input
 validation and unpinned dependencies remain review items before exposing a server.
 
+### Local popup check
+
+![Backend offline popup layout](docs/ui-offline.png)
+
+This is the actual local popup HTML rendered in an isolated Edge page at its
+natural 320px width. Chrome storage/tab APIs and network requests were stubbed.
+It is a layout check, not an installed-extension or live-service capture.
+Named 44px toggle targets, visible keyboard focus and Space-key toggling passed;
+no page error or horizontal overflow was observed. Helper text and offline status contrast were improved.
+
 ![Source review flow diagram, not a runtime screenshot](docs/review-flow.svg)
 
 The diagram is based on code, not a live account capture. No login, solution
